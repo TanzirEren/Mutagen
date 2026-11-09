@@ -19,13 +19,23 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 8.4
+      - name: Make wrapper executable
+        run: chmod +x gradlew
 
+      # Gradle distribution download can fail with 504 on services.gradle.org,
+      # so retry and fall back to a mirror.
       - name: Build debug APK
-        run: gradle assembleDebug --stacktrace
+        run: |
+          for attempt in 1 2 3; do
+            echo "== attempt $attempt =="
+            if ./gradlew assembleDebug --stacktrace --no-daemon; then exit 0; fi
+            if [ "$attempt" = "2" ]; then
+              echo "Switching Gradle download to mirror"
+              sed -i 's#https\\://services.gradle.org/distributions#https\\://mirrors.cloud.tencent.com/gradle#' gradle/wrapper/gradle-wrapper.properties
+            fi
+            sleep 15
+          done
+          exit 1
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

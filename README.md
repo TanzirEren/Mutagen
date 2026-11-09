@@ -6,7 +6,7 @@ edit smali / strings / manifest / assets / identity, then rebuild, sign and inst
 ## Build on GitHub Actions
 1. Create a repo, upload everything in this folder (keep the `.github` folder).
 2. Push to `main`. Open **Actions → Build Mutagen APK**, download the `Mutagen-debug-apk` artifact.
-   (No Gradle wrapper needed; the workflow installs Gradle 8.4 + JDK 17.)
+   (Uses the bundled Gradle 8.4 wrapper + JDK 17, with retry and mirror fallback if the Gradle download fails.)
 
 ## Replace the logo with your own
 Overwrite these PNGs (rounded corners baked into the PNG) and push again:
