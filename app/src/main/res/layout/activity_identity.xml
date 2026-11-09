@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_card" android:gravity="center_vertical" android:orientation="horizontal" android:padding="14dp">
+                <ImageView android:id="@+id/imgLogo" android:layout_width="64dp" android:layout_height="64dp" />
+                <TextView android:id="@+id/tvLogoInfo" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="14dp" android:layout_weight="1" android:text="Launcher icon" android:textColor="@color/text2" android:textSize="12sp" />
+                <Button android:id="@+id/btnLogo" style="@style/BtnGhost" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pick PNG" />
+            </LinearLayout>
+
+            <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="APP NAME" />
+            <EditText android:id="@+id/etName" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+            <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PACKAGE ID (applicationId)" />
+            <EditText android:id="@+id/etPkg" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textNoSuggestions" />
+            <CheckBox android:id="@+id/cbFull" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Full refactor (also rename package in smali + XML)" android:textColor="@color/text" android:textSize="13sp" />
+            <CheckBox android:id="@+id/cbAuth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="Update provider authorities / permissions" android:textColor="@color/text" android:textSize="13sp" />
+
+            <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VERSION NAME / CODE" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <EditText android:id="@+id/etVName" style="@style/Input" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                <EditText android:id="@+id/etVCode" style="@style/Input" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_weight="1" android:inputType="number" />
+            </LinearLayout>
+
+            <Button android:id="@+id/btnApply" style="@style/Btn" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="Apply identity changes" />
+
+            <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26dp" android:text="CLASS RENAME (class id)" />
+            <EditText android:id="@+id/etOldCls" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="old: com.example.app.MainActivity" android:inputType="textNoSuggestions" />
+            <EditText android:id="@+id/etNewCls" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="new: com.example.app.HomeActivity" android:inputType="textNoSuggestions" />
+            <Button android:id="@+id/btnRenameCls" style="@style/BtnGhost" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Rename class" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

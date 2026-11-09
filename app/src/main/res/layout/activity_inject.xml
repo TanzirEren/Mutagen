@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:id="@+id/form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="INJECTION TYPE" />
+            <Spinner android:id="@+id/spType" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input" android:popupBackground="@drawable/bg_card" />
+
+            <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TARGET ACTIVITY" />
+            <Spinner android:id="@+id/spTarget" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input" android:popupBackground="@drawable/bg_card" />
+
+            <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TARGET METHOD" />
+            <EditText android:id="@+id/etMethod" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="onCreate(Landroid/os/Bundle;)V" />
+
+            <LinearLayout android:id="@+id/grpDialog" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TITLE" />
+                <EditText android:id="@+id/etTitle" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Welcome" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/grpMsg" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:id="@+id/lblMsg" style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MESSAGE" />
+                <EditText android:id="@+id/etMsg" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:singleLine="false" android:minLines="2" android:gravity="top" android:text="Injected by Mutagen" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/grpOk" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BUTTON TEXT" />
+                <EditText android:id="@+id/etOk" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="OK" />
+                <CheckBox android:id="@+id/cbCancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:checked="false" android:text="Cancelable (tap outside / back to close)" android:textColor="@color/text" android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/grpUrl" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:id="@+id/lblUrl" style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LINK URL" />
+                <EditText android:id="@+id/etUrl" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="https://t.me/yourchannel" android:inputType="textUri" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/grpRaw" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RAW SMALI (inserted as-is)" />
+                <EditText android:id="@+id/etRaw" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:fontFamily="monospace" android:gravity="top|start" android:inputType="textMultiLine|textNoSuggestions" android:minLines="5" android:singleLine="false" android:hint="invoke-static {p0}, Lcom/x/Y;-&gt;z(Landroid/content/Context;)V" />
+                <TextView style="@style/Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="EXTRA REGISTERS (.locals +N)" />
+                <EditText android:id="@+id/etLocals" style="@style/Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:text="0" />
+            </LinearLayout>
+
+            <Button android:id="@+id/btnInject" style="@style/Btn" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="22dp" android:text="Inject now" />
+            <Button android:id="@+id/btnUndo" style="@style/BtnGhost" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Undo last injection" />
+            <TextView android:id="@+id/tvLog" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:fontFamily="monospace" android:textColor="@color/text2" android:textSize="11sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
